@@ -1,0 +1,1 @@
+MediaInfo: JSON round-trip and required-field rejection passed

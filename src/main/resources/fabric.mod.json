@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "id": "celebression",
+  "version": "2.0.1",
+  "name": "celebression",
+  "description": "",
+  "authors": [
+    "method"
+  ],
+  "contact": {},
+  "license": "All-Rights-Reserved",
+  "icon": "assets/celebression/logo.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "ru.method.celebression.Celebression"
+    ],
+    "client": [
+      "unkw.visualtest.client.Visual_testClient"
+    ]
+  },
+  "mixins": [
+    "celebression.mixins.json",
+    "celebression.punchy.mixins.json",
+    "visual-test.client.mixins.json",
+    "celebression.integration.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.16.14",
+    "minecraft": "1.21.4",
+    "fabric-api": "*"
+  },
+  "jars": [
+    {
+      "file": "META-INF/jars/jna-5.15.0.jar"
+    },
+    {
+      "file": "META-INF/jars/jna-platform-5.15.0.jar"
+    },
+    {
+      "file": "META-INF/jars/kotlin-stdlib-1.9.25.jar"
+    },
+    {
+      "file": "META-INF/jars/orbit-0.2.3.jar"
+    },
+    {
+      "file": "META-INF/jars/skija-macos-arm64-0.93.6.jar"
+    },
+    {
+      "file": "META-INF/jars/skija-macos-x64-0.93.6.jar"
+    },
+    {
+      "file": "META-INF/jars/skija-shared-0.93.6.jar"
+    },
+    {
+      "file": "META-INF/jars/skija-windows-0.93.6.jar"
+    }
+  ]
+}

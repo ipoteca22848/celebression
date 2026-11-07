@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "unkw.visualtest.mixin.client",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "MinecraftClientFramebufferMixin",
+    "WorldRendererFramebufferMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "refmap": "celebression.refmap.json"
+}

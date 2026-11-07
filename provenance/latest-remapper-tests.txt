@@ -1,0 +1,11 @@
+test_ambiguity_stops_generation (test_remap_sources.SourceRemappingTest.test_ambiguity_stops_generation) ... ok
+test_namespace_order_is_read_from_header (test_remap_sources.SourceRemappingTest.test_namespace_order_is_read_from_header) ... ok
+test_nested_class_and_ordinary_identifiers (test_remap_sources.SourceRemappingTest.test_nested_class_and_ordinary_identifiers) ... ok
+test_nested_injection_annotation_is_translated (test_remap_sources.SourceRemappingTest.test_nested_injection_annotation_is_translated) ... ok
+test_package_member_and_descriptor (test_remap_sources.SourceRemappingTest.test_package_member_and_descriptor) ... ok
+test_reflection_names_and_comments_stay_in_runtime_namespace (test_remap_sources.SourceRemappingTest.test_reflection_names_and_comments_stay_in_runtime_namespace) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.001s
+
+OK

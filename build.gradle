@@ -1,0 +1,123 @@
+plugins {
+    id 'fabric-loom' version '1.10.5'
+    id 'maven-publish'
+}
+
+group = 'ru.method.celebression'
+version = '2.0.1'
+base { archivesName = 'celebression' }
+
+repositories {
+    maven { url = 'https://maven.fabricmc.net/' }
+    mavenCentral()
+    maven {
+        url = 'https://packages.jetbrains.team/maven/p/skija/maven'
+        content { includeGroup 'org.jetbrains.skija' }
+    }
+}
+
+configurations { sourceMappings }
+
+dependencies {
+    minecraft 'com.mojang:minecraft:1.21.4'
+    mappings 'net.fabricmc:yarn:1.21.4+build.8:v2'
+    sourceMappings 'net.fabricmc:yarn:1.21.4+build.8:v2'
+    testImplementation 'org.jetbrains.kotlinx:kotlinx-serialization-json-jvm:1.6.3'
+    modImplementation 'net.fabricmc:fabric-loader:0.16.14'
+    modImplementation 'net.fabricmc.fabric-api:fabric-api:0.119.3+1.21.4'
+    compileOnly 'org.projectlombok:lombok:1.18.36'
+    annotationProcessor 'org.projectlombok:lombok:1.18.36'
+    // Decompiled sources use @Generated but explicit getters are already present.
+    implementation fileTree('src/main/resources/META-INF/jars') { include '*.jar' }
+    implementation 'org.jetbrains.kotlinx:kotlinx-serialization-core-jvm:1.6.3'
+    include 'org.jetbrains.kotlinx:kotlinx-serialization-core-jvm:1.6.3'
+    implementation 'com.github.hypfvieh:dbus-java-core:4.3.1'
+    include 'com.github.hypfvieh:dbus-java-core:4.3.1'
+    runtimeOnly 'com.github.hypfvieh:dbus-java-transport-native-unixsocket:4.3.1'
+    include 'com.github.hypfvieh:dbus-java-transport-native-unixsocket:4.3.1'
+    // Preserve the original bundled Windows/macOS Skija runtime.
+    // Linux 0.93.6 is not published in the vendor repository.
+}
+
+java {
+    toolchain { languageVersion = JavaLanguageVersion.of(21) }
+    withSourcesJar()
+}
+
+def generatedSources = layout.buildDirectory.dir('generated/sources/yarn')
+tasks.register('prepareNamedSources', Exec) {
+    inputs.dir('src/main/java')
+    inputs.files(configurations.sourceMappings)
+    inputs.file('tools/remap_sources.py')
+    outputs.dir(generatedSources)
+    doFirst {
+        commandLine 'python3', 'tools/remap_sources.py',
+            '--mappings', configurations.sourceMappings.singleFile.absolutePath,
+            '--source', file('src/main/java').absolutePath,
+            '--output', generatedSources.get().asFile.absolutePath
+    }
+}
+
+sourceSets.main.java.setSrcDirs([generatedSources, 'src/integration/java'])
+tasks.named('compileJava') { dependsOn 'prepareNamedSources' }
+tasks.named('sourcesJar') { dependsOn 'prepareNamedSources' }
+tasks.withType(JavaCompile).configureEach {
+    options.release = 21
+    options.compilerArgs += ['-Xmaxerrs', '2000']
+    options.encoding = 'UTF-8'
+}
+
+loom {
+    mixin { defaultRefmapName = 'celebression.refmap.json' }
+    runs {
+        client {
+            client()
+            name = 'celebression client'
+            vmArg '-Xmx2G'
+        }
+    }
+}
+
+processResources {
+    inputs.property 'version', project.version
+    filesMatching('fabric.mod.json') { expand version: project.version }
+    // The annotation processor generates the refmap for the actual compiled sources.
+    exclude 'celebression.refmap.json'
+}
+
+tasks.register('verifySourceLayout', Exec) {
+    commandLine 'python3', 'tools/verify_layout.py'
+}
+tasks.named('check') { dependsOn 'verifySourceLayout' }
+
+sourceSets.test.java.setSrcDirs(['tests'])
+tasks.register('testSourceRemapping', Exec) {
+    commandLine 'python3', '-m', 'unittest', 'discover', '-s', 'tests', '-v'
+}
+tasks.register('testMediaSerialization', JavaExec) {
+    dependsOn 'testClasses'
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'MediaInfoSmoke'
+}
+tasks.named('check') { dependsOn 'testSourceRemapping', 'testMediaSerialization' }
+
+tasks.register('testDataDirectory', JavaExec) {
+    dependsOn 'testClasses'
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'DataDirectorySmoke'
+}
+tasks.register('testUiFonts', JavaExec) {
+    dependsOn 'testClasses'
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'UiFontSmoke'
+    jvmArgs '-Djava.awt.headless=true'
+    args file('src/integration/java/ru/method/celebression/integration/ui/manager/fontManager/FontUtils.java').absolutePath
+}
+tasks.named('check') { dependsOn 'testDataDirectory', 'testUiFonts' }
+
+tasks.register('testSessionDeactivation', JavaExec) {
+    dependsOn 'testClasses'
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'SessionDeactivationSmoke'
+}
+tasks.named('check') { dependsOn 'testSessionDeactivation' }

@@ -1,0 +1,2 @@
+Layout OK: 852 Java files, 2 entry points, 124 mixins, 8 embedded dependencies.
+This checks layout only, not compilation, runtime behavior or UI integration.

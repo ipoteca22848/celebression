@@ -1,0 +1,3 @@
+All 763 Java sources preserved with branding substitutions and the mod-container ID update only.
+159 binary resources compared byte-for-byte: unchanged.
+No source files missing.

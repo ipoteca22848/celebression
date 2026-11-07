@@ -1,0 +1,173 @@
+{
+    "enable": {
+        "category": "master",
+        "sounds": [
+            "celebression:enable"
+        ]
+    },
+    "disable": {
+        "category": "master",
+        "sounds": [
+            "celebression:disable"
+        ]
+    },
+    "critical": {
+        "category": "master",
+        "sounds": [
+            "celebression:critical"
+        ]
+    },
+    "clickgui_open": {
+        "category": "master",
+        "sounds": [
+            "celebression:clickgui_open"
+        ]
+    },
+    "bell": {
+        "category": "master",
+        "sounds": [
+            "celebression:bell"
+        ]
+    },
+    "crime": {
+        "category": "master",
+        "sounds": [
+            "celebression:crime"
+        ]
+    },
+    "nya": {
+        "category": "master",
+        "sounds": [
+            "celebression:nya"
+        ]
+    },
+    "uwu": {
+        "category": "master",
+        "sounds": [
+            "celebression:uwu"
+        ]
+    },
+    "hellodragons": {
+        "category": "master",
+        "sounds": [
+            "celebression:hellodragons"
+        ]
+    },
+    "krithealth_lechisy": {
+        "category": "master",
+        "sounds": [
+            "celebression:krithealth_lechisy"
+        ]
+    },
+    "molodec_ubil": {
+        "category": "master",
+        "sounds": [
+            "celebression:molodec_ubil"
+        ]
+    },
+    "unichtozjen": {
+        "category": "master",
+        "sounds": [
+            "celebression:unichtozjen"
+        ]
+    },
+    "zapen": {
+        "category": "master",
+        "sounds": [
+            "celebression:zapen"
+        ]
+    },
+    "vcheli": {
+        "category": "master",
+        "sounds": [
+            "celebression:vcheli"
+        ]
+    },
+    "respawn": {
+        "category": "master",
+        "sounds": [
+            "celebression:respawn"
+        ]
+    },
+    "next_raz_povezyo": {
+        "category": "master",
+        "sounds": [
+            "celebression:next_raz_povezyo"
+        ]
+    },
+    "snes_totema": {
+        "category": "master",
+        "sounds": [
+            "celebression:snes_totema"
+        ]
+    },
+    "multikill": {
+        "category": "master",
+        "sounds": [
+            "celebression:multikill"
+        ]
+    },
+    "neostonovim": {
+        "category": "master",
+        "sounds": [
+            "celebression:neostonovim"
+        ]
+    },
+    "dabkill": {
+        "category": "master",
+        "sounds": [
+            "celebression:dabkill"
+        ]
+    },
+    "mainmenu/track": {
+        "category": "master",
+        "sounds": [
+            {
+                "name": "celebression:mainmenu/evilshit",
+                "stream": true
+            }
+        ]
+    },
+    "cosmetic/itachi": {
+        "category": "master",
+        "sounds": [
+            "celebression:cosmetic/sounds/itachi"
+        ]
+    },
+    "cosmetic/naruto_shadow_clones": {
+        "category": "master",
+        "sounds": [
+            "celebression:cosmetic/sounds/naruto_shadow_clones"
+        ]
+    },
+    "dota_double_kill": {
+        "category": "master",
+        "sounds": [
+            "celebression:dota_double_kill"
+        ]
+    },
+    "dota_triple_kill": {
+        "category": "master",
+        "sounds": [
+            "celebression:dota_triple_kill"
+        ]
+    },
+    "dota_mega_kill": {
+        "category": "master",
+        "sounds": [
+            "celebression:dota_mega_kill"
+        ]
+    },
+    "dota_monster_kill": {
+        "category": "master",
+        "sounds": [
+            "celebression:dota_monster_kill"
+        ]
+    },
+    "dota_rampage": {
+        "category": "master",
+        "sounds": [
+            "celebression:dota_rampage"
+        ]
+    }
+}

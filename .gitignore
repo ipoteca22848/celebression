@@ -1,0 +1,17 @@
+.gradle/
+.idea/
+build/
+out/
+run/
+*.iml
+
+# Local state and diagnostics must not be published.
+.cache/
+.tools/
+.gradle-home/
+__pycache__/
+*.pyc
+*.log
+*.heapdump
+.env
+.env.*

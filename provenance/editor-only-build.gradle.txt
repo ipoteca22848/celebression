@@ -1,0 +1,96 @@
+plugins {
+    id 'java'
+    id 'idea'
+}
+
+group = 'ru.method'
+version = '2.0'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+}
+
+def runtimeJar = layout.projectDirectory.file('runtime/celebression-2.0.jar')
+def gradleCaches = new File(gradle.gradleUserHomeDir, 'caches')
+
+dependencies {
+    // Libraries available to the source editor in IntelliJ IDEA.
+    compileOnly files(runtimeJar)
+    compileOnly project.fileTree('src/main/resources/META-INF/jars') {
+        include '*.jar'
+    }
+    compileOnly project.fileTree(new File(gradleCaches, 'fabric-loom/minecraftMaven')) {
+        include '**/1.21.4-*/**/*merged-intermediary*.jar'
+    }
+    compileOnly project.fileTree(new File(gradleCaches, 'modules-2/files-2.1')) {
+        include '**/*.jar'
+        exclude '**/*-sources.jar', '**/*-javadoc.jar', '**/fabric-loom-*.jar'
+        exclude '**/intermediary-*-v2.jar', '**/yarn-*-v2.jar'
+    }
+}
+
+tasks.named('jar') {
+    enabled = false
+}
+
+tasks.register('assembleRunnable', Copy) {
+    group = 'build'
+    description = 'Copies a supplied runtime; does not compile modified Java sources.'
+    dependsOn 'verifyProject'
+    from runtimeJar
+    into layout.buildDirectory.dir('libs')
+    rename { 'celebression-2.0-ready.jar' }
+}
+
+tasks.register('verifyProject') {
+    group = 'verification'
+    description = 'Checks the source tree, mappings and runtime JAR.'
+    doLast {
+        File jarFile = runtimeJar.asFile
+        if (!jarFile.isFile()) {
+            throw new GradleException("Missing runtime JAR: ${jarFile}")
+        }
+
+        int sourceCount = fileTree('src/main/java') { include '**/*.java' }.files.size()
+        int topMapCount = file('mappings/top-level-classes.tsv').readLines('UTF-8').size() - 1
+        int innerMapCount = file('mappings/inner-classes.tsv').readLines('UTF-8').size() - 1
+        def completeMappings = file('mappings/classes.tsv').readLines('UTF-8').drop(1).collect {
+            it.split('\t', 2)[1] + '.class'
+        }
+        int completeMapCount = completeMappings.size()
+        int packageMapCount = file('mappings/packages.tsv').readLines('UTF-8').size() - 1
+        def entries = zipTree(jarFile).files.collect { it.path.replace('\\', '/') }
+        def missingMappedClasses = completeMappings.findAll { mappedClass ->
+            !entries.any { entry -> entry.endsWith('/' + mappedClass) }
+        }
+        boolean legacyPackagePresent = entries.any { it.contains('/ru/method/celebression/obf/') }
+        boolean flatCorePresent = entries.any { it.contains('/ru/method/celebression/core/') }
+
+        if (sourceCount != 763) throw new GradleException("Expected 763 Java sources, got ${sourceCount}")
+        if (topMapCount != 356) throw new GradleException("Expected 356 top mappings, got ${topMapCount}")
+        if (innerMapCount != 139) throw new GradleException("Expected 139 named inner mappings, got ${innerMapCount}")
+        if (completeMapCount != 512) throw new GradleException("Expected 512 complete mappings, got ${completeMapCount}")
+        if (packageMapCount != 356) throw new GradleException("Expected 356 package mappings, got ${packageMapCount}")
+        if (!missingMappedClasses.isEmpty()) throw new GradleException("Missing mapped classes: ${missingMappedClasses.take(5)}")
+        if (legacyPackagePresent) throw new GradleException('Legacy package is still present in runtime JAR')
+        if (flatCorePresent) throw new GradleException('Flat core package is still present in runtime JAR')
+
+        println "Verified: ${sourceCount} sources, ${completeMapCount} class mappings, ${packageMapCount} package mappings"
+    }
+}
+
+tasks.named('assemble') {
+    dependsOn tasks.named('assembleRunnable')
+}
+
+tasks.named('check') {
+    dependsOn tasks.named('verifyProject')
+}
+
+idea {
+    module {
+        downloadSources = false
+        downloadJavadoc = false
+    }
+}
