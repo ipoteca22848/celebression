@@ -156,6 +156,8 @@ MinecraftClientAccess {
             LOGGER.error("[Celebression] RemotePets unavailable; continuing without remote pets.", throwable);
         }
         this.configManager.initialize();
+        ru.method.celebression.modules.impl.client.UI initialUi = this.moduleManager.getModule(ru.method.celebression.modules.impl.client.UI.class);
+        if (initialUi != null) initialUi.migrateLegacyDefaultPalette();
         this.discordManager.init();
         if (FabricLoader.getInstance().getEnvironmentType() == EnvType.CLIENT) {
             CosmeticResourceRegistry.register();

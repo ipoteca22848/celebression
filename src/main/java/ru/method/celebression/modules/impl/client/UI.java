@@ -228,6 +228,14 @@ extends Module {
         return (HudThemeRenderer.ThemePalette)uI.hudShape.jT();
     }
 
+    public void migrateLegacyDefaultPalette() {
+        if (this.primaryColor.jT().equals(new Color(95, 218, 139))
+                && this.secondaryColor.jT().equals(new Color(170, 232, 195))) {
+            this.primaryColor.d(new Color(142, 216, 255));
+            this.secondaryColor.d(new Color(196, 235, 255));
+        }
+    }
+
     public void syncFromLinkTheme(ClientTheme clientTheme) {
         if (clientTheme == null) {
             return;
