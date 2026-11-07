@@ -8,7 +8,7 @@ import ru.method.celebression.utils.render.ColorUtils;
 
 public enum ClientTheme
 implements NamedOption  {
-    YZ("Midnight", new Color(126, 223, 180), new Color(15, 18, 23), new Color(244, 247, 250)),
+    YZ("Midnight", new Color(142, 216, 255), new Color(15, 18, 23), new Color(244, 247, 250)),
     Za("Graphite", new Color(154, 164, 173), new Color(18, 19, 23), new Color(240, 242, 247)),
     Zb("Amethyst", new Color(177, 138, 224), new Color(20, 16, 28), new Color(247, 242, 255)),
     Zc("Ocean", new Color(77, 163, 232), new Color(12, 18, 28), new Color(232, 246, 255)),

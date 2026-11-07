@@ -319,8 +319,8 @@ implements MinecraftClientAccess {
     static {
         pickerCacheBX = Float.NaN;
         pickerCacheBY = Float.NaN;
-        primaryColor = new Color(95, 218, 139);
-        secondaryColor = new Color(170, 232, 195);
+        primaryColor = new Color(142, 216, 255);
+        secondaryColor = new Color(196, 235, 255);
         backgroundColor = new Color(220, 220, 220);
         textColor = new Color(244, 247, 250);
         themeFadeEnabled = true;

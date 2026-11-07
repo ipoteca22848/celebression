@@ -79,21 +79,21 @@ public class MainMenu extends Screen {
         float cos1 = (float) Math.cos(animTime * Math.PI * 2);
         float cos2 = (float) Math.cos(animTime * Math.PI * 2 + Math.PI / 2);
 
-        int baseR1 = Math.max(0, Math.min(255, 40 + (int)(sin1 * 30)));
-        int baseG1 = Math.max(0, Math.min(255, 20 + (int)(cos1 * 20)));
-        int baseB1 = Math.max(0, Math.min(255, 30 + (int)(sin2 * 25)));
+        int baseR1 = Math.max(0, Math.min(255, 14 + (int)(sin1 * 8)));
+        int baseG1 = Math.max(0, Math.min(255, 32 + (int)(cos1 * 16)));
+        int baseB1 = Math.max(0, Math.min(255, 56 + (int)(sin2 * 22)));
 
-        int baseR2 = Math.max(0, Math.min(255, 50 + (int)(cos2 * 35)));
-        int baseG2 = Math.max(0, Math.min(255, 25 + (int)(sin1 * 25)));
-        int baseB2 = Math.max(0, Math.min(255, 45 + (int)(cos1 * 30)));
+        int baseR2 = Math.max(0, Math.min(255, 18 + (int)(cos2 * 10)));
+        int baseG2 = Math.max(0, Math.min(255, 40 + (int)(sin1 * 18)));
+        int baseB2 = Math.max(0, Math.min(255, 72 + (int)(cos1 * 24)));
 
-        int baseR3 = Math.max(0, Math.min(255, 35 + (int)(cos1 * 30)));
-        int baseG3 = Math.max(0, Math.min(255, 15 + (int)(sin2 * 20)));
-        int baseB3 = Math.max(0, Math.min(255, 40 + (int)(sin1 * 30)));
+        int baseR3 = Math.max(0, Math.min(255, 12 + (int)(cos1 * 8)));
+        int baseG3 = Math.max(0, Math.min(255, 30 + (int)(sin2 * 14)));
+        int baseB3 = Math.max(0, Math.min(255, 62 + (int)(sin1 * 22)));
 
-        int baseR4 = Math.max(0, Math.min(255, 45 + (int)(sin2 * 35)));
-        int baseG4 = Math.max(0, Math.min(255, 20 + (int)(cos2 * 25)));
-        int baseB4 = Math.max(0, Math.min(255, 35 + (int)(cos1 * 25)));
+        int baseR4 = Math.max(0, Math.min(255, 16 + (int)(sin2 * 10)));
+        int baseG4 = Math.max(0, Math.min(255, 36 + (int)(cos2 * 16)));
+        int baseB4 = Math.max(0, Math.min(255, 68 + (int)(cos1 * 24)));
 
         int color1 = new Color(baseR1, baseG1, baseB1, 255).getRGB();
         int color2 = new Color(baseR2, baseG2, baseB2, 255).getRGB();
@@ -131,9 +131,9 @@ public class MainMenu extends Screen {
 
         // Основной заголовок с градиентом
         float time = (System.currentTimeMillis() % 4000L) / 1500f;
-        int lightRed1 = new Color(255, 180, 180, 255).getRGB();
-        int lightRed2 = new Color(255, 140, 140, 255).getRGB();
-        FontUtils.sf_bold[54].renderAnimatedGradientText(context.getMatrices(), title, titleX, titleY, lightRed1, lightRed2, time);
+        int lightBlue1 = new Color(196, 235, 255, 255).getRGB();
+        int lightBlue2 = new Color(142, 216, 255, 255).getRGB();
+        FontUtils.sf_bold[54].renderAnimatedGradientText(context.getMatrices(), title, titleX, titleY, lightBlue1, lightBlue2, time);
 
         float titleHeight = 54;
         int spacing = 12;
@@ -156,7 +156,7 @@ public class MainMenu extends Screen {
                 this.width / 2f + 1, clockY + 1, new Color(0, 0, 0, 100).getRGB());
 // Основные часы
         FontUtils.sf_medium[24].centeredDraw(context.getMatrices(), timeString,
-                this.width / 2f, clockY, new Color(255, 200, 200, 255).getRGB());
+                this.width / 2f, clockY, new Color(218, 243, 255, 255).getRGB());
 
         float buttonsStartY = titleBaseY + titleHeight + spacing * 2;
         int centerX = this.width / 2 - buttonWidth / 2;
@@ -263,7 +263,7 @@ public class MainMenu extends Screen {
         }
 
         void render(DrawContext context) {
-            int color = new Color(255, 180, 180, alpha).getRGB();
+            int color = new Color(196, 235, 255, alpha).getRGB();
             RenderUtil.drawRoundedRect(context.getMatrices(), (int)x, (int)y, (int)size, (int)size, size / 2, color);
         }
     }
@@ -310,7 +310,7 @@ public class MainMenu extends Screen {
                 RenderUtil.drawRoundedRect(context.getMatrices(),
                         x - 3, y - 3,
                         width + 6, height + 6,
-                        10, new Color(255, 140, 140, glowAlpha).getRGB());
+                        10, new Color(142, 216, 255, glowAlpha).getRGB());
             }
 
             // Тень кнопки
@@ -321,7 +321,7 @@ public class MainMenu extends Screen {
 
             // Градиентный фон кнопки
             int baseColor = new Color(25, 25, 25, (int)(120 * fadeAlpha)).getRGB();
-            int hoverColor = new Color(50, 30, 30, (int)(180 * fadeAlpha)).getRGB();
+            int hoverColor = new Color(28, 44, 57, (int)(180 * fadeAlpha)).getRGB();
             int bgColor = ColorUtil.blendColorsInt(baseColor, hoverColor, hoverAnim);
 
             RenderUtil.drawRoundedRect(context.getMatrices(), x, y, width, height, 7, bgColor);
@@ -331,7 +331,7 @@ public class MainMenu extends Screen {
                 int borderAlpha = (int)(hoverAnim * 150 * fadeAlpha);
                 RenderUtil.drawRoundedRect(context.getMatrices(),
                         x, y, width, height, 7,
-                        new Color(255, 140, 140, borderAlpha).getRGB());
+                        new Color(142, 216, 255, borderAlpha).getRGB());
             }
 
             float textHeight = 20;
@@ -399,7 +399,7 @@ public class MainMenu extends Screen {
             }
 
             int baseColor = new Color(25, 25, 25, (int)(120 * fadeAlpha)).getRGB();
-            int hoverColor = new Color(50, 30, 30, (int)(180 * fadeAlpha)).getRGB();
+            int hoverColor = new Color(28, 44, 57, (int)(180 * fadeAlpha)).getRGB();
 
             int buttonWidth = halfWidth - shrink;
 
@@ -417,7 +417,7 @@ public class MainMenu extends Screen {
                 RenderUtil.drawRoundedRect(context.getMatrices(),
                         leftX - 3, y - 3,
                         buttonWidth + 6, height + 6,
-                        10, new Color(255, 140, 140, glowAlpha).getRGB());
+                        10, new Color(142, 216, 255, glowAlpha).getRGB());
             }
 
             RenderUtil.drawRoundedRect(context.getMatrices(), leftX + 2, y + 2, buttonWidth, height, 7, new Color(0, 0, 0, (int)(100 * fadeAlpha)).getRGB());
@@ -425,7 +425,7 @@ public class MainMenu extends Screen {
 
             if (leftHoverAnim > 0) {
                 int borderAlpha = (int)(leftHoverAnim * 150 * fadeAlpha);
-                RenderUtil.drawRoundedRect(context.getMatrices(), leftX, y, buttonWidth, height, 7, new Color(255, 140, 140, borderAlpha).getRGB());
+                RenderUtil.drawRoundedRect(context.getMatrices(), leftX, y, buttonWidth, height, 7, new Color(142, 216, 255, borderAlpha).getRGB());
             }
 
             int textColor = new Color(255, 255, 255, (int)(255 * fadeAlpha)).getRGB();
@@ -446,7 +446,7 @@ public class MainMenu extends Screen {
                 RenderUtil.drawRoundedRect(context.getMatrices(),
                         rightX - 3, y - 3,
                         buttonWidth + 6, height + 6,
-                        10, new Color(255, 140, 140, glowAlpha).getRGB());
+                        10, new Color(142, 216, 255, glowAlpha).getRGB());
             }
 
             RenderUtil.drawRoundedRect(context.getMatrices(), rightX + 2, y + 2, buttonWidth, height, 7, new Color(0, 0, 0, (int)(100 * fadeAlpha)).getRGB());
@@ -454,7 +454,7 @@ public class MainMenu extends Screen {
 
             if (rightHoverAnim > 0) {
                 int borderAlpha = (int)(rightHoverAnim * 150 * fadeAlpha);
-                RenderUtil.drawRoundedRect(context.getMatrices(), rightX, y, buttonWidth, height, 7, new Color(255, 140, 140, borderAlpha).getRGB());
+                RenderUtil.drawRoundedRect(context.getMatrices(), rightX, y, buttonWidth, height, 7, new Color(142, 216, 255, borderAlpha).getRGB());
             }
 
             FontUtils.sf_medium[20].centeredDraw(context.getMatrices(), rightName, rightX + buttonWidth / 2f, y + (height - 10) / 2.2f, textColor);

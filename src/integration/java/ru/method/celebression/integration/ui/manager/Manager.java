@@ -82,6 +82,7 @@ public final class Manager {
                 Files.createDirectories(directory());
                 var root = new JsonObject();
                 root.add("colors", STYLE_MANAGER.saveColors());
+                root.addProperty("paletteVersion", 2);
                 root.addProperty("tab", ClickGUI.getPersistedTabName());
                 root.add("scroll", ClickGUI.getPersistedScrollJson());
                 root.addProperty("language", ClickGUI.getPersistedGuiLanguageName());
@@ -95,9 +96,11 @@ public final class Manager {
             try {
                 var root = JsonParser.parseString(Files.readString(file)).getAsJsonObject();
                 if (root.has("colors")) STYLE_MANAGER.loadColors(root.getAsJsonObject("colors"));
+                boolean upgradeStockPalette = !root.has("paletteVersion") && STYLE_MANAGER.getFirstColor() == 0xFFBD2232;
                 if (root.has("tab")) ClickGUI.setPersistedTabFromName(root.get("tab").getAsString());
                 if (root.has("scroll")) ClickGUI.loadPersistedScrollFromJson(root.getAsJsonObject("scroll"));
                 if (root.has("language")) ru.method.celebression.integration.ui.screens.mainmenu.MenuLanguageState.load(root.get("language").getAsString());
+                if (upgradeStockPalette) STYLE_MANAGER.applyPreset(0);
             } catch (Exception e) { Celebression.LOGGER.warn("Cannot read UI configuration", e); }
         }
     }

@@ -66,21 +66,21 @@ public class AltManager extends Screen implements IMinecraft {
 
         // Базовые цвета: темно-красный, темно-фиолетовый, темно-синий
         // Ограничиваем значения от 0 до 255
-        int baseR1 = Math.max(0, Math.min(255, 40 + (int)(sin1 * 30))); // 40-70
-        int baseG1 = Math.max(0, Math.min(255, 20 + (int)(cos1 * 20))); // 20-40
-        int baseB1 = Math.max(0, Math.min(255, 30 + (int)(sin2 * 25))); // 30-55
+        int baseR1 = Math.max(0, Math.min(255, 14 + (int)(sin1 * 8))); // 40-70
+        int baseG1 = Math.max(0, Math.min(255, 32 + (int)(cos1 * 16))); // 20-40
+        int baseB1 = Math.max(0, Math.min(255, 56 + (int)(sin2 * 22))); // 30-55
 
-        int baseR2 = Math.max(0, Math.min(255, 50 + (int)(cos2 * 35))); // 50-85
-        int baseG2 = Math.max(0, Math.min(255, 25 + (int)(sin1 * 25))); // 25-50
-        int baseB2 = Math.max(0, Math.min(255, 45 + (int)(cos1 * 30))); // 45-75
+        int baseR2 = Math.max(0, Math.min(255, 18 + (int)(cos2 * 10))); // 50-85
+        int baseG2 = Math.max(0, Math.min(255, 40 + (int)(sin1 * 18))); // 25-50
+        int baseB2 = Math.max(0, Math.min(255, 72 + (int)(cos1 * 24))); // 45-75
 
-        int baseR3 = Math.max(0, Math.min(255, 35 + (int)(cos1 * 30))); // 35-65
-        int baseG3 = Math.max(0, Math.min(255, 15 + (int)(sin2 * 20))); // 15-35
-        int baseB3 = Math.max(0, Math.min(255, 40 + (int)(sin1 * 30))); // 40-70
+        int baseR3 = Math.max(0, Math.min(255, 12 + (int)(cos1 * 8))); // 35-65
+        int baseG3 = Math.max(0, Math.min(255, 30 + (int)(sin2 * 14))); // 15-35
+        int baseB3 = Math.max(0, Math.min(255, 62 + (int)(sin1 * 22))); // 40-70
 
-        int baseR4 = Math.max(0, Math.min(255, 45 + (int)(sin2 * 35))); // 45-80
-        int baseG4 = Math.max(0, Math.min(255, 20 + (int)(cos2 * 25))); // 20-45
-        int baseB4 = Math.max(0, Math.min(255, 35 + (int)(cos1 * 25))); // 35-60
+        int baseR4 = Math.max(0, Math.min(255, 16 + (int)(sin2 * 10))); // 45-80
+        int baseG4 = Math.max(0, Math.min(255, 36 + (int)(cos2 * 16))); // 20-45
+        int baseB4 = Math.max(0, Math.min(255, 68 + (int)(cos1 * 24))); // 35-60
 
         // Цвета для углов (верх-лев, верх-прав, низ-прав, низ-лев)
         int color1 = new Color(baseR1, baseG1, baseB1, 255).getRGB();
@@ -109,9 +109,9 @@ public class AltManager extends Screen implements IMinecraft {
 
         float time = (System.currentTimeMillis() % 4000L) / 1500f;
         // Светло-красные цвета для заголовка
-        int lightRed1 = new Color(255, 180, 180, 255).getRGB();
-        int lightRed2 = new Color(255, 140, 140, 255).getRGB();
-        FontUtils.sf_bold[48].renderAnimatedGradientText(drawContext.getMatrices(), title, titleX, titleY, lightRed1, lightRed2, time);
+        int lightBlue1 = new Color(196, 235, 255, 255).getRGB();
+        int lightBlue2 = new Color(142, 216, 255, 255).getRGB();
+        FontUtils.sf_bold[48].renderAnimatedGradientText(drawContext.getMatrices(), title, titleX, titleY, lightBlue1, lightBlue2, time);
 
         int centerX = width / 2;
         int centerY = height / 2;

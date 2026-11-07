@@ -13,14 +13,14 @@ Note: Recompile with -Xlint:deprecation for details.
 Note: Some input files use unchecked or unsafe operations.
 Note: Recompile with -Xlint:unchecked for details.
 
-> Task :processResources UP-TO-DATE
+> Task :processResources
 > Task :classes
 > Task :jar
-> Task :compileTestJava
+> Task :compileTestJava UP-TO-DATE
 > Task :processIncludeJars UP-TO-DATE
 > Task :sourcesJar
 > Task :processTestResources NO-SOURCE
-> Task :testClasses
+> Task :testClasses UP-TO-DATE
 > Task :test
 
 > Task :testDataDirectory
@@ -45,7 +45,7 @@ test_stable_mojang_import_is_preserved (test_remap_sources.SourceRemappingTest.t
 test_all_fonts_requested_by_initializer_exist (test_ui_font_resources.UiFontResourcesTest.test_all_fonts_requested_by_initializer_exist) ... ok
 
 ----------------------------------------------------------------------
-Ran 10 tests in 0.004s
+Ran 10 tests in 0.003s
 
 OK
 
@@ -73,5 +73,5 @@ You can use '--warning-mode all' to show the individual deprecation warnings and
 
 For more on this, please refer to https://docs.gradle.org/8.12.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
 
-BUILD SUCCESSFUL in 1m 6s
+BUILD SUCCESSFUL in 1m 15s
 16 actionable tasks: 14 executed, 2 up-to-date

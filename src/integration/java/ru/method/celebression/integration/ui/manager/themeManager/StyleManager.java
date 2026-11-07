@@ -16,18 +16,18 @@ public class StyleManager implements IMinecraft {
     }
 
     public static final ThemePreset[] PRESETS = {
-            preset(0xFFBD2232, colors(
-                    "primaryColor", 0xFFBD2232,
-                    "fonColor", 0xF5181918,
+            preset(0xFF8ED8FF, colors(
+                    "primaryColor", 0xFF8ED8FF,
+                    "fonColor", 0xF518202B,
                     "textColor", 0xFFFFFFFF,
-                    "iconColor", 0xFFA81919,
+                    "iconColor", 0xFF8ED8FF,
                     "iconnoColor", 0x64FFFFFF,
                     "infoColor", 0xFFFFFFFF,
                     "scrollColor", 0xFF636363,
-                    "yesColor", 0xFF00DC82,
+                    "yesColor", 0xFF8ED8FF,
                     "crossColor", 0xFFDC4646,
-                    "goldColor", 0xFFA07D52,
-                    "sliderColor", 0xFF691D1D
+                    "goldColor", 0xFFB2E5FF,
+                    "sliderColor", 0xFF5A9FC4
             )),
             preset(0xFF1E1E1E, colors(
                     "primaryColor", 0xFF1E1E1E,
@@ -74,17 +74,17 @@ public class StyleManager implements IMinecraft {
 
     public void init() {
         colors.clear();
-        add("primaryColor", "Основной", "Главный акцентный цвет интерфейса", 0xFFBD2232);
-        add("fonColor", "Фон", "Цвет фона окон и панелей", 0xF5181918);
+        add("primaryColor", "Основной", "Главный акцентный цвет интерфейса", 0xFF8ED8FF);
+        add("fonColor", "Фон", "Цвет фона окон и панелей", 0xF518202B);
         add("textColor", "Текст", "Основной цвет текста", 0xFFFFFFFF);
-        add("iconColor", "Иконки", "Цвет активных иконок", 0xFFA81919);
+        add("iconColor", "Иконки", "Цвет активных иконок", 0xFF8ED8FF);
         add("iconnoColor", "Прочее", "Приглушённые иконки и элементы", 0x64FFFFFF);
         add("infoColor", "Заголовки", "Цвет заголовков и названий", 0xFFFFFFFF);
         add("scrollColor", "Скролл", "Полосы прокрутки и разделители", 0xFF636363);
-        add("yesColor", "Включено", "Индикатор включённых элементов", 0xFF00DC82);
+        add("yesColor", "Включено", "Индикатор включённых элементов", 0xFF8ED8FF);
         add("crossColor", "Выключено", "Индикатор выключенных элементов", 0xFFDC4646);
-        add("goldColor", "Акцент полоска", "Декоративные акцентные полоски", 0xFFA07D52);
-        add("sliderColor", "Слайдер", "Цвет ползунков и слайдеров", 0xFF691D1D);
+        add("goldColor", "Акцент полоска", "Декоративные акцентные полоски", 0xFFB2E5FF);
+        add("sliderColor", "Слайдер", "Цвет ползунков и слайдеров", 0xFF5A9FC4);
     }
 
     private void add(String key, String name, String description, int color) {

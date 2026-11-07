@@ -15,12 +15,14 @@
   "click_gui": "source_integration_and_visual_setting_adapters_added_runtime_unverified",
   "new_hud": "not_integrated",
   "published": false,
-  "artifact": "build/libs/celebression-2.0.1.jar",
+  "artifact": "build/libs/celebression-2.0.2.jar",
   "minecraft_startup": "not_tested",
   "source_remapping_and_resource_tests_passed": 10,
   "gui_font_decoding": "passed_16_fonts",
   "session_deactivation": "passed_state_tests_not_game_tested",
   "config_migration": "passed",
   "rpc_application_id": "1568650316876877974",
-  "rpc_live_connection": "not_tested"
+  "rpc_live_connection": "not_tested",
+  "default_accent": "#8ED8FF",
+  "default_secondary": "#C4EBFF"
 }
