@@ -5,7 +5,7 @@ Daemon will be stopped at the end of the build
 Fabric Loom: 1.10.5
 
 > Task :prepareNamedSources
-Generated 767 Yarn source files in /workspace/celebression/build/generated/sources/yarn
+Generated 770 Yarn source files in /workspace/celebression/build/generated/sources/yarn
 
 > Task :compileJava
 Note: Some input files use or override a deprecated API.
@@ -13,14 +13,14 @@ Note: Recompile with -Xlint:deprecation for details.
 Note: Some input files use unchecked or unsafe operations.
 Note: Recompile with -Xlint:unchecked for details.
 
-> Task :processResources UP-TO-DATE
+> Task :processResources
 > Task :classes
 > Task :jar
-> Task :compileTestJava UP-TO-DATE
+> Task :compileTestJava
 > Task :processIncludeJars UP-TO-DATE
 > Task :sourcesJar
 > Task :processTestResources NO-SOURCE
-> Task :testClasses UP-TO-DATE
+> Task :testClasses
 > Task :test
 
 > Task :testDataDirectory
@@ -28,6 +28,17 @@ DataDirectory: migration, repeatability and existing settings preserved
 
 > Task :testMediaSerialization
 MediaInfo: JSON round-trip and required-field rejection passed
+
+> Task :testNativeBindings
+WARNING in native method: JNI call made without checking exceptions when required to from CallObjectMethodV
+	at ru.method.linkenvisuals.obf.Q0.registerNatives(Native Method)
+	at ru.method.celebression.service.NativeLibraryLoader.registerNatives(NativeLibraryLoader.java:51)
+	at ru.method.celebression.service.NativeLibraryLoader.call(NativeLibraryLoader.java:36)
+	at ru.method.linkenvisuals.obf.ma.<clinit>(ma.java:23)
+	at ru.method.celebression.service.NativeProtectionStatus.enabled(NativeProtectionStatus.java:6)
+	at NativeBindingsSmoke.main(NativeBindingsSmoke.java:4)
+Native verifier loaded; enabled=true
+Malformed, forged and missing signatures rejected
 
 > Task :testSessionDeactivation
 Session deactivation: ordering, one-shot behavior and failure state passed
@@ -45,7 +56,7 @@ test_stable_mojang_import_is_preserved (test_remap_sources.SourceRemappingTest.t
 test_all_fonts_requested_by_initializer_exist (test_ui_font_resources.UiFontResourcesTest.test_all_fonts_requested_by_initializer_exist) ... ok
 
 ----------------------------------------------------------------------
-Ran 10 tests in 0.006s
+Ran 10 tests in 0.004s
 
 OK
 
@@ -56,7 +67,7 @@ UI font decoding passed for 16 packaged fonts
 > Task :validateAccessWidener NO-SOURCE
 
 > Task :verifySourceLayout
-Layout OK: 856 Java files, 2 entry points, 124 mixins, 8 embedded dependencies.
+Layout OK: 859 Java files, 2 entry points, 124 mixins, 8 embedded dependencies.
 This checks layout only, not compilation, runtime behavior or UI integration.
 
 > Task :check
@@ -73,5 +84,5 @@ You can use '--warning-mode all' to show the individual deprecation warnings and
 
 For more on this, please refer to https://docs.gradle.org/8.12.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
 
-BUILD SUCCESSFUL in 1m 7s
-16 actionable tasks: 13 executed, 3 up-to-date
+BUILD SUCCESSFUL in 1m 13s
+17 actionable tasks: 16 executed, 1 up-to-date

@@ -4,7 +4,7 @@ plugins {
 }
 
 group = 'ru.method.celebression'
-version = '2.0.2'
+version = '2.0.3'
 base { archivesName = 'celebression' }
 
 repositories {
@@ -121,3 +121,12 @@ tasks.register('testSessionDeactivation', JavaExec) {
     mainClass = 'SessionDeactivationSmoke'
 }
 tasks.named('check') { dependsOn 'testSessionDeactivation' }
+
+tasks.register('testNativeBindings', Exec) {
+    dependsOn 'testClasses'
+    doFirst {
+        commandLine 'python3', 'tools/test_native_bindings.py',
+            javaToolchains.launcherFor { languageVersion = JavaLanguageVersion.of(21) }.get().executablePath.asFile.absolutePath
+    }
+}
+tasks.named('check') { dependsOn 'testNativeBindings' }

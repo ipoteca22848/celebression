@@ -47,7 +47,9 @@ public final class NativeLibraryLoader {
         return internalOrBinary;
     }
 
-    private static native void registerNatives(Class<?> var0);
+    private static void registerNatives(Class<?> target) {
+        ru.method.linkenvisuals.obf.Q0.registerNatives(target);
+    }
 
         private static void ensureLoaded() {
         if (loaded) {

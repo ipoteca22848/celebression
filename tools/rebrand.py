@@ -17,6 +17,15 @@ PATTERN = re.compile('|'.join(map(re.escape, REPLACEMENTS)))
 TEXT_EXTENSIONS = {'.java', '.json', '.properties', '.gradle', '.txt', '.vsh', '.fsh', '.glsl', '.mcmeta', '.cfg', '.xml', '.yaml', '.yml'}
 
 def excluded(path):
+    # These internal names are a binary ABI exported by the bundled native library.
+    # Renaming them breaks JNI registration; user-visible branding stays celebression.
+    relative = path.as_posix()
+    if relative.startswith('src/main/java/ru/method/linkenvisuals') or relative in {
+        'src/main/java/ru/method/celebression/service/NativeProtectionStatus.java',
+        'src/main/java/ru/method/celebression/service/NativeLibraryLoader.java',
+        'src/main/java/ru/method/celebression/util/StringDecryptor.java',
+    }:
+        return True
     return any(part in {'.git', '.gradle', 'build', 'tools', 'provenance'} for part in path.parts) or path.name.lower().startswith(('license', 'notice', 'copying'))
 
 def main():
