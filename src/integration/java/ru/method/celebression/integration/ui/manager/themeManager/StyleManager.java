@@ -143,6 +143,7 @@ public class StyleManager implements IMinecraft {
 
     public JsonObject saveColors() {
         JsonObject root = new JsonObject();
+        root.addProperty("celebressionBlueTheme", true);
         for (GuiThemeColor e : colors) {
             JsonObject o = new JsonObject();
             o.addProperty("color", e.color);
@@ -166,6 +167,14 @@ public class StyleManager implements IMinecraft {
             if (o.has("brightness")) e.brightness = o.get("brightness").getAsFloat();
             if (o.has("alpha")) e.alpha = o.get("alpha").getAsFloat();
             e.syncColorFromHsb();
+        }
+        // Upgrade existing saved palettes once; subsequent user changes remain editable.
+        if (!root.has("celebressionBlueTheme")) {
+            for (var item : PRESETS[0].colors().entrySet()) {
+                GuiThemeColor entry = getEntry(item.getKey());
+                if (entry != null) entry.setColor(item.getValue());
+            }
+            selectedPreset = 0;
         }
     }
 

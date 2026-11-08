@@ -163,23 +163,28 @@ public final class MainMenuBrandRenderer {
             f10 = f7 - f6;
             f11 = f10 - (logoState.qt() - (float)logoState.qs());
         }
-        f6 = Math.max(1.0f, 3.0f * f3);
-        float f12 = f11 - 12.0f * f3;
-        float f13 = f12 - f6;
-        int n5 = MainMenuBrandRenderer.a(f9, d);
-        int n6 = MainMenuBrandRenderer.a(f9 + f8, d);
-        int n7 = MainMenuBrandRenderer.a(f13, d);
-        int n8 = n7 + Math.max(1, (int)Math.round((double)f6 / d));
-        MainMenuBrandRenderer.b(class_3322, n5, n7, n6, n8, MainMenuBrandRenderer.s(Math.round(f4 * 255.0f * 0.08f), 0xFFFFFF));
-        int n9 = MainMenuBrandRenderer.a(f9 + f8 * f5, d);
-        if (n9 > n5) {
-            int n10 = Math.max(1, MainMenuBrandRenderer.a(12.0f * f3, d));
-            int n11 = Math.round(f4 * 255.0f * 0.42f);
-            if (n11 > 2) {
-                class_3322.method_25296(n5, n7 - n10, n9, n7, MainMenuBrandRenderer.s(0, 0x8ED8FF), MainMenuBrandRenderer.s(n11, 0x8ED8FF));
-                class_3322.method_25296(n5, n8, n9, n8 + n10, MainMenuBrandRenderer.s(n11, 0x8ED8FF), MainMenuBrandRenderer.s(0, 0x8ED8FF));
+        float f12 = f11 - 16.0f * f3;
+        int left = a(f9, d), right = a(f9 + f8, d);
+        int bottom = a(f12, d), top = bottom - Math.max(10, a(24f * f3, d));
+        int opacity = Math.round(f4 * 255f);
+        b(class_3322, left - 1, top - 1, right + 1, bottom + 1, s(Math.round(opacity * .65f), 0x8ED8FF));
+        b(class_3322, left, top, right, bottom, s(opacity, 0x102536));
+        double phase = System.nanoTime() / 700_000_000d;
+        int innerLeft = left + 2, innerRight = right - 2;
+        int innerTop = top + 2, innerBottom = bottom - 2;
+        int span = Math.max(0, innerRight - innerLeft);
+        // Each row touches the preceding row; the moving water stays inside the tank.
+        for (int row = innerTop; row < innerBottom; row++) {
+            double wave = Math.sin((row - innerTop) * .55 + phase * 2.8) * 2.2
+                        + Math.sin((row - innerTop) * .24 - phase * 1.7) * 1.1;
+            float edgeStrength = (float)Math.sin(Math.PI * f5);
+            int edge = Math.max(innerLeft, Math.min(innerRight, innerLeft + Math.round(span * f5 + (float)wave * edgeStrength)));
+            float depth = (float)(row - innerTop) / Math.max(1, innerBottom - innerTop);
+            int r = Math.round(120 - depth * 88), g = Math.round(218 - depth * 64), blue = Math.round(255 - depth * 18);
+            if (edge > innerLeft) {
+                class_3322.method_25294(innerLeft, row, edge, row + 1, s(opacity, (r << 16) | (g << 8) | blue));
+                class_3322.method_25294(Math.max(innerLeft, edge - 1), row, edge, row + 1, s(opacity, 0xC7F5FF));
             }
-            MainMenuBrandRenderer.b(class_3322, n5, n7, n9, n8, MainMenuBrandRenderer.s(Math.round(f4 * 255.0f), 0x8ED8FF));
         }
         if (logoState != null) {
             MainMenuBrandRenderer.a(class_3322, logoState, f9, f10, d, n2);

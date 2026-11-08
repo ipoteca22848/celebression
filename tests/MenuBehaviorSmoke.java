@@ -2,6 +2,7 @@ import java.nio.file.*;
 import ru.method.celebression.service.AppearancePreferences;
 import ru.method.celebression.service.IntroTransition;
 import ru.method.celebression.server.ServerAds;
+import ru.method.celebression.server.ServerLabel;
 
 public class MenuBehaviorSmoke {
     public static void main(String[] args) throws Exception {
@@ -30,6 +31,9 @@ public class MenuBehaviorSmoke {
             if (ServerAds.isPromotion("My private server", "play.example.org:25565")) throw new AssertionError("Personal server removed");
             if (ServerAds.isPromotion("Cute friends", "cute.example.org")) throw new AssertionError("Unrelated server removed");
             if (ServerAds.isPromotion(null, null)) throw new AssertionError("Empty server treated as promotion");
+            if (!ServerLabel.resolve("celbrus", "play.example.org", "Celbrus").equals("play.example.org")) throw new AssertionError("Session nickname exposed as server label");
+            if (!ServerLabel.resolve("Friends", "play.example.org", "celbrus").equals("Friends")) throw new AssertionError("Unrelated custom server label changed");
+            if (!ServerLabel.resolve("celbrus", "", "celbrus").equals("Сервер")) throw new AssertionError("Missing address has no neutral label");
             System.out.println("Menus: appearance persistence, smooth intro and promotion filtering passed");
         } finally {
             try (var paths = Files.walk(directory)) {

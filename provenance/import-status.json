@@ -2,7 +2,7 @@
   "status": "jar_built",
   "functional_module_registrations": 82,
   "donor_gameplay_modules_imported": 0,
-  "base_java_files": 774,
+  "base_java_files": 775,
   "integration_java_files": 92,
   "branding": "celebression",
   "build": "successful",
@@ -15,7 +15,7 @@
   "click_gui": "source_integration_and_visual_setting_adapters_added_runtime_unverified",
   "new_hud": "not_integrated",
   "published": false,
-  "artifact": "build/libs/celebression-2.0.4.jar",
+  "artifact": "build/libs/celebression-2.0.5.jar",
   "minecraft_startup": "not_tested",
   "source_remapping_and_resource_tests_passed": 10,
   "gui_font_decoding": "passed_16_fonts",
@@ -31,5 +31,11 @@
   "menu_appearance": "persistent_switch_and_fades_runtime_unverified",
   "menu_behavior_tests": "passed",
   "server_promotions": "filtered_and_remote_promotions_disabled",
-  "creator_telegram_links": "removed_from_ui"
+  "creator_telegram_links": "removed_from_ui",
+  "server_label": "session_nickname_replaced_with_address_without_deleting_server",
+  "loading_indicator": "bounded_liquid_gradient_runtime_unverified",
+  "menu_entrance": "restarted_after_splash_then_staggered_buttons_runtime_unverified",
+  "click_gui_logo": "transparent_c_emblem_based_on_user_image",
+  "click_gui_palette": "blue_saved_palette_migration_once",
+  "source_archive": "releases/celebression-2.0.5-source.zip"
 }

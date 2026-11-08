@@ -44,6 +44,8 @@ public class MainMenu extends Screen {
         ru.method.celebression.integration.ui.manager.Manager.initialize();
     }
 
+    public void restartEntrance() { initTime = System.nanoTime(); fadeIn = 0f; }
+
     @Override
     protected void init() {
         initTime = System.nanoTime();
@@ -179,10 +181,26 @@ public class MainMenu extends Screen {
         float alpha = fadeIn;
         context.getMatrices().translate(0, (1 - fadeIn) * 20, 0);
 
-        singleplayerButton.render(context, mouseX, mouseY, delta, alpha);
-        multiplayerButton.render(context, mouseX, mouseY, delta, alpha);
-        altmanagerButton.render(context, mouseX, mouseY, delta, alpha);
-        optionsQuitButton.render(context, mouseX, mouseY, delta, alpha);
+        context.getMatrices().push();
+        float reveal0 = ru.method.celebression.service.IntroTransition.progress(initTime + 180_000_000L, System.nanoTime(), 650_000_000L);
+        context.getMatrices().translate(0, (1f - reveal0) * 14f, 0);
+        singleplayerButton.render(context, mouseX, mouseY, delta, reveal0);
+        context.getMatrices().pop();
+        context.getMatrices().push();
+        float reveal1 = ru.method.celebression.service.IntroTransition.progress(initTime + 265_000_000L, System.nanoTime(), 650_000_000L);
+        context.getMatrices().translate(0, (1f - reveal1) * 14f, 0);
+        multiplayerButton.render(context, mouseX, mouseY, delta, reveal1);
+        context.getMatrices().pop();
+        context.getMatrices().push();
+        float reveal2 = ru.method.celebression.service.IntroTransition.progress(initTime + 350_000_000L, System.nanoTime(), 650_000_000L);
+        context.getMatrices().translate(0, (1f - reveal2) * 14f, 0);
+        altmanagerButton.render(context, mouseX, mouseY, delta, reveal2);
+        context.getMatrices().pop();
+        context.getMatrices().push();
+        float reveal3 = ru.method.celebression.service.IntroTransition.progress(initTime + 435_000_000L, System.nanoTime(), 650_000_000L);
+        context.getMatrices().translate(0, (1f - reveal3) * 14f, 0);
+        optionsQuitButton.render(context, mouseX, mouseY, delta, reveal3);
+        context.getMatrices().pop();
 
         context.getMatrices().pop();
 

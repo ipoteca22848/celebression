@@ -27,9 +27,9 @@ extends class_4071 {
     @Unique
     private static final Logger celebression$LOGGER = LoggerFactory.getLogger((String)"Celebression/Splash");
     @Unique
-    private static final float celebression$HOLD = 0.12f;
+    private static final float celebression$HOLD = 0.35f;
     @Unique
-    private static final float celebression$SLIDE = 0.45f;
+    private static final float celebression$SLIDE = 0.65f;
     @Unique
     private static boolean celebression$broken;
     @Unique
@@ -86,10 +86,11 @@ extends class_4071 {
                 }
                 f2 = 0.0f;
             }
+            if (f2 >= 0.22f) this.field_17770 = 1.0f;
             float f7 = 1.0f;
             float f8 = 0.0f;
             if (f2 >= 0.0f) {
-                f8 = class_3532.method_15363((float)((f2 - 0.12f) / 0.45f), (float)0.0f, (float)1.0f);
+                f8 = class_3532.method_15363((float)((f2 - celebression$HOLD) / celebression$SLIDE), (float)0.0f, (float)1.0f);
                 if (this.field_18217.field_1755 != null) {
                     this.field_18217.field_1755.method_25394(class_3322, n, n2, f);
                 }
@@ -103,6 +104,7 @@ extends class_4071 {
             if (f8 >= 1.0f) {
                 MainMenuBrandRenderer.qc();
                 this.field_18217.method_18502(null);
+                if (this.field_18217.field_1755 instanceof ru.method.celebression.integration.ui.screens.mainmenu.MainMenu menu) menu.restartEntrance();
             }
             callbackInfo.cancel();
         }

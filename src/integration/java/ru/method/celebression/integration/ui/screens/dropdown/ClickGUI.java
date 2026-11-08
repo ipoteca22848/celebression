@@ -689,7 +689,7 @@ public class ClickGUI extends Screen implements IMinecraft {
         int topBarFill = topBarFillColor();
 
         RenderUtil.drawRoundedRect(ctx.getMatrices(), startX + 8.5f, startY + 7f, 18, 18, 5, topBarFill);
-        FontUtils.celebression[22].drawLeftAligned(ctx.getMatrices(), "a", startX + 12f, startY + 10f, guiTextPrimary());
+        RenderUtil.drawTexture(ctx.getMatrices(), "textures/celebression_logo.png", startX + 8.5f, startY + 7f, 18, 18, 0, ao(0xFFFFFFFF));
         FontUtils.roboto[15].drawLeftAligned(ctx.getMatrices(), "celebression", startX + 31.5f, startY + 11.5f, guiTextPrimary());
 
         int searchW = 130;

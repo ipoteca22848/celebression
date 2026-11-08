@@ -719,6 +719,7 @@ implements MinecraftClientAccess {
 
     private static String i(class_642 class_6422) {
         String string = MultiplayerScreen.aS(class_6422.field_3752 == null ? "" : class_6422.field_3752);
+        string = ru.method.celebression.server.ServerLabel.resolve(string, class_6422.field_3761, MenuChrome.nick());
         string = ach.matcher(string).replaceAll("");
         string = aci.matcher(string).replaceAll("").trim();
         if ((string = string.replaceAll("[\\s,;\u00b7|]+$", "").trim()).isEmpty()) {
