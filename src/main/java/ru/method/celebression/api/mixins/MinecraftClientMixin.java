@@ -47,7 +47,7 @@ public abstract class MinecraftClientMixin {
 
     @Inject(method={"setScreen"}, at={@At(value="HEAD")}, cancellable=true)
     private void celebression$redirectDisconnected(class_437 class_4372, CallbackInfo callbackInfo) {
-        if (ru.method.celebression.service.UnhookService.isActive()) return;
+        if (!ru.method.celebression.service.AppearanceMode.isCustom()) return;
         if (class_4372 instanceof class_419) {
             class_2561 class_25612;
             class_419 class_4192 = (class_419)class_4372;
@@ -67,7 +67,7 @@ public abstract class MinecraftClientMixin {
 
     @Inject(method={"setScreen"}, at={@At(value="HEAD")}, cancellable=true)
     private void celebression$redirectMultiplayer(class_437 class_4372, CallbackInfo callbackInfo) {
-        if (ru.method.celebression.service.UnhookService.isActive()) return;
+        if (!ru.method.celebression.service.AppearanceMode.isCustom()) return;
         if (class_4372 instanceof class_500) {
             callbackInfo.cancel();
             ((class_310)(Object)this).method_1507((class_437)new MultiplayerScreen(null));
@@ -76,7 +76,7 @@ public abstract class MinecraftClientMixin {
 
     @Inject(method={"setScreen"}, at={@At(value="HEAD")}, cancellable=true)
     private void celebression$redirectPauseMenu(class_437 class_4372, CallbackInfo callbackInfo) {
-        if (ru.method.celebression.service.UnhookService.isActive()) return;
+        if (!ru.method.celebression.service.AppearanceMode.isCustom()) return;
         class_433 class_4332;
         if (class_4372 instanceof class_433 && (class_4332 = (class_433)class_4372).method_53558()) {
             callbackInfo.cancel();
@@ -86,7 +86,7 @@ public abstract class MinecraftClientMixin {
 
     @Inject(method={"setScreen"}, at={@At(value="HEAD")}, cancellable=true)
     private void celebression$redirectOptions(class_437 class_4372, CallbackInfo callbackInfo) {
-        if (ru.method.celebression.service.UnhookService.isActive()) return;
+        if (!ru.method.celebression.service.AppearanceMode.isCustom()) return;
         class_437 class_4373 = SettingsEntryRenderer.e(class_4372);
         if (class_4373 == null) {
             return;

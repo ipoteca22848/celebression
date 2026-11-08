@@ -840,12 +840,8 @@ public class ClickGUI extends Screen implements IMinecraft {
             currentY += 4;
         }
 
-        int profileY = startY + WINDOW_HEIGHT - 24;
+        // Creator promotion removed.
 
-        RenderUtil.drawRoundedRect(ctx.getMatrices(), startX + 30, profileY - 2, 16, 16, 7, ao(new Color(30, 30, 30).getRGB()));
-        FontUtils.icomoon[10].drawLeftAligned(ctx.getMatrices(), "A", startX + 17 + 12, profileY + 2, guiTextPrimary());
-        FontUtils.inter[12].drawLeftAligned(ctx.getMatrices(), "t.me/soezproject", startX + 38 + 12, profileY - 0.5f, guiTextPrimary());
-        FontUtils.roboto[11].drawLeftAligned(ctx.getMatrices(), "Admin", startX + 38 + 12, profileY + 6.5f, ao(new Color(209, 44, 44).getRGB()));
     }
 
     private void renderTab(DrawContext ctx, int startX, int y, Tab tab, int mouseX, int mouseY, boolean sub) {

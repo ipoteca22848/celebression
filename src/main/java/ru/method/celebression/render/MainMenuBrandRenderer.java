@@ -11,15 +11,16 @@ public final class MainMenuBrandRenderer {
     private static final int ade = 658956;
     private static final int adf = 395528;
     private static final int adg = 329478;
-    private static final int adh = 8314804;
+    private static final int adh = 0x8ED8FF;
     private static final int adi = 0xEEF2EF;
     private static final int adj = 6121570;
     private static final int adk = 7897981;
     private static final int adl = 0xC3CCC7;
     private static final int adm = 5002833;
     private static final int adn = 4147780;
-    private static final String ado = "by @emper0rhero and telegram.me/celebression";
     private static final String adp = "\u041d\u0435 \u0441\u0432\u044f\u0437\u0430\u043d \u0441 Mojang \u0438 Microsoft";
+
+    private static long titleStartedNanos;
 
     private MainMenuBrandRenderer() {
     }
@@ -81,6 +82,7 @@ public final class MainMenuBrandRenderer {
     }
 
     public static void qc() {
+        titleStartedNanos = 0L;
         MainMenuLogoRenderer.qc();
     }
 
@@ -91,7 +93,7 @@ public final class MainMenuBrandRenderer {
     }
 
     private static void b(class_332 class_3322, int n, int n2, int n3) {
-        MainMenuLogoRenderer.LogoState logoState = MainMenuLogoRenderer.h(8314804, 0.06f);
+        MainMenuLogoRenderer.LogoState logoState = MainMenuLogoRenderer.h(0x8ED8FF, 0.06f);
         if (logoState == null) {
             return;
         }
@@ -106,7 +108,7 @@ public final class MainMenuBrandRenderer {
         int n4 = MainMenuBrandRenderer.a(24.0f * f, d);
         int n5 = Math.max(2, MainMenuBrandRenderer.a(18.0f * f, d));
         int n6 = Math.max(1, MainMenuBrandRenderer.a(f, d));
-        int n7 = MainMenuBrandRenderer.s(Math.round((float)n3 * 0.35f), 8314804);
+        int n7 = MainMenuBrandRenderer.s(Math.round((float)n3 * 0.35f), 0x8ED8FF);
         class_3322.method_25294(n4, n4, n4 + n5, n4 + n6, n7);
         class_3322.method_25294(n4, n4, n4 + n6, n4 + n5, n7);
         class_3322.method_25294(n - n4 - n5, n2 - n4 - n6, n - n4, n2 - n4, n7);
@@ -114,10 +116,15 @@ public final class MainMenuBrandRenderer {
     }
 
     private static void a(class_332 class_3322, float f, float f2, float f3, double d, int n, int n2) {
+        if (titleStartedNanos == 0L) titleStartedNanos = System.nanoTime();
+        float appear = ru.method.celebression.service.IntroTransition.progress(titleStartedNanos, System.nanoTime(), 850_000_000L);
+        n2 = (n2 & 0x00FFFFFF) | (Math.round((n2 >>> 24) * appear) << 24);
+        f2 += (1f - appear) * 18f * f3;
+
         int n3 = Math.max(8, Math.round(72.0f * f3));
         int n4 = Math.max(5, Math.round(12.0f * f3));
-        MainMenuLogoRenderer.LogoState logoState = MainMenuLogoRenderer.a(MainMenuLogoRenderer.LogoAsset.adC, "celebression", n3, 0xEEF2EF, -0.04f, n);
-        MainMenuLogoRenderer.LogoState logoState2 = MainMenuLogoRenderer.a(MainMenuLogoRenderer.LogoAsset.adC, ".", n3, 8314804, 0.0f, n);
+        MainMenuLogoRenderer.LogoState logoState = MainMenuLogoRenderer.a(MainMenuLogoRenderer.LogoAsset.adC, "celebression", n3, 0x8ED8FF, -0.04f, n);
+        MainMenuLogoRenderer.LogoState logoState2 = MainMenuLogoRenderer.a(MainMenuLogoRenderer.LogoAsset.adC, ".", n3, 0x8ED8FF, 0.0f, n);
         MainMenuLogoRenderer.LogoState logoState3 = MainMenuLogoRenderer.a(MainMenuLogoRenderer.LogoAsset.adD, "VISUALS", n4, 6121570, 0.42f, n);
         if (logoState == null) {
             return;
@@ -169,10 +176,10 @@ public final class MainMenuBrandRenderer {
             int n10 = Math.max(1, MainMenuBrandRenderer.a(12.0f * f3, d));
             int n11 = Math.round(f4 * 255.0f * 0.42f);
             if (n11 > 2) {
-                class_3322.method_25296(n5, n7 - n10, n9, n7, MainMenuBrandRenderer.s(0, 8314804), MainMenuBrandRenderer.s(n11, 8314804));
-                class_3322.method_25296(n5, n8, n9, n8 + n10, MainMenuBrandRenderer.s(n11, 8314804), MainMenuBrandRenderer.s(0, 8314804));
+                class_3322.method_25296(n5, n7 - n10, n9, n7, MainMenuBrandRenderer.s(0, 0x8ED8FF), MainMenuBrandRenderer.s(n11, 0x8ED8FF));
+                class_3322.method_25296(n5, n8, n9, n8 + n10, MainMenuBrandRenderer.s(n11, 0x8ED8FF), MainMenuBrandRenderer.s(0, 0x8ED8FF));
             }
-            MainMenuBrandRenderer.b(class_3322, n5, n7, n9, n8, MainMenuBrandRenderer.s(Math.round(f4 * 255.0f), 8314804));
+            MainMenuBrandRenderer.b(class_3322, n5, n7, n9, n8, MainMenuBrandRenderer.s(Math.round(f4 * 255.0f), 0x8ED8FF));
         }
         if (logoState != null) {
             MainMenuBrandRenderer.a(class_3322, logoState, f9, f10, d, n2);
@@ -183,23 +190,12 @@ public final class MainMenuBrandRenderer {
     }
 
     private static void b(class_332 class_3322, float f, float f2, float f3, double d, int n, int n2) {
-        float f4;
-        float f5;
-        int n3 = Math.max(5, Math.round(9.5f * f3));
-        int n4 = Math.max(5, Math.round(10.5f * f3));
-        MainMenuLogoRenderer.LogoState logoState = MainMenuLogoRenderer.a(MainMenuLogoRenderer.LogoAsset.adE, "by @emper0rhero and telegram.me/celebression", n3, 5002833, 0.0f, n);
-        MainMenuLogoRenderer.LogoState logoState2 = MainMenuLogoRenderer.a(MainMenuLogoRenderer.LogoAsset.adB, "\u041d\u0435 \u0441\u0432\u044f\u0437\u0430\u043d \u0441 Mojang \u0438 Microsoft", n4, 4147780, 0.0f, n);
-        float f6 = f2 - 44.0f * f3;
-        if (logoState2 != null) {
-            f5 = (float)logoState2.qr() - (float)logoState2.qs() * 2.0f;
-            f4 = f6 - f5;
-            MainMenuBrandRenderer.a(class_3322, logoState2, f / 2.0f - logoState2.advance() / 2.0f, f4 + (logoState2.qt() - (float)logoState2.qs()), d, n2);
-            f6 = f4 - 6.0f * f3;
-        }
-        if (logoState != null) {
-            f5 = (float)logoState.qr() - (float)logoState.qs() * 2.0f;
-            f4 = f6 - f5;
-            MainMenuBrandRenderer.a(class_3322, logoState, f / 2.0f - logoState.advance() / 2.0f, f4 + (logoState.qt() - (float)logoState.qs()), d, n2);
+        int size = Math.max(5, Math.round(10.5f * f3));
+        MainMenuLogoRenderer.LogoState note = MainMenuLogoRenderer.a(MainMenuLogoRenderer.LogoAsset.adB,
+                "Не связан с Mojang и Microsoft", size, 4147780, 0.0f, n);
+        if (note != null) {
+            float y = f2 - 44f * f3 - (note.qr() - note.qs() * 2f);
+            MainMenuBrandRenderer.a(class_3322, note, f / 2f - note.advance() / 2f, y + note.qt() - note.qs(), d, n2);
         }
     }
 

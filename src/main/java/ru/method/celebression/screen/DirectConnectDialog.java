@@ -14,7 +14,7 @@ extends ServerDialog {
         if (act.isEmpty() && (string = class_310.method_1551().field_1690.field_1864) != null) {
             act = string;
         }
-        this.acB.add(new ServerDialog.DialogField("\u0410\u0434\u0440\u0435\u0441 \u0441\u0435\u0440\u0432\u0435\u0440\u0430", "mc.artygrief.su", act));
+        this.acB.add(new ServerDialog.DialogField("\u0410\u0434\u0440\u0435\u0441 \u0441\u0435\u0440\u0432\u0435\u0440\u0430", "play.example.org", act));
     }
 
     @Override

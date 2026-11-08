@@ -5,6 +5,8 @@
   "compatibilityLevel": "JAVA_21",
   "refmap": "celebression.refmap.json",
   "client": [
-    "SessionAccessor"
+    "SessionAccessor",
+    "AppearanceTitleScreenMixin",
+    "ServerListAdvertisingMixin"
   ]
 }

@@ -25,7 +25,7 @@ implements MinecraftClientAccess {
     private static final String LARGE_IMAGE_KEY = "photo_2026-05-03_12-21-54";
     private static final String SMALL_IMAGE_KEY = "photo_2026-05-03_12-21-54";
     private static final String CLIENT_NAME = "celebression";
-    private static final String CLIENT_VERSION = "2.0.3";
+    private static final String CLIENT_VERSION = "2.0.4";
     private static final String MAIN_MENU_DETAILS = "\u0412 \u0433\u043b\u0430\u0432\u043d\u043e\u043c \u043c\u0435\u043d\u044e";
     private static final String SINGLEPLAYER_DETAILS = "\u041e\u0434\u0438\u043d\u043e\u0447\u043d\u0430\u044f \u0438\u0433\u0440\u0430";
     private static final String PLAYING_ON_PREFIX = "\u0418\u0433\u0440\u0430\u0435\u0442 \u043d\u0430 ";

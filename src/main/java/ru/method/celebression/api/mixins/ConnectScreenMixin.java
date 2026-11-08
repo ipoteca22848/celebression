@@ -49,11 +49,13 @@ extends class_437 {
 
     @Inject(method={"render"}, at={@At(value="HEAD")}, cancellable=true)
     private void celebression$render(class_332 class_3322, int n, int n2, float f, CallbackInfo callbackInfo) {
+        if (!ru.method.celebression.service.AppearanceMode.isCustom()) return;
         callbackInfo.cancel();
         ServerEntryRenderer.a(class_3322, n, n2, this.field_2413, celebression$name, celebression$addr);
     }
 
     public boolean method_25402(double d, double d2, int n) {
+        if (!ru.method.celebression.service.AppearanceMode.isCustom()) return super.method_25402(d, d2, n);
         float f;
         float f2;
         if (n == 0 && MenuChrome.in(ServerEntryRenderer.ada, f2 = (float)(d / (double)ServerEntryRenderer.uiScale), f = (float)(d2 / (double)ServerEntryRenderer.uiScale))) {
@@ -63,6 +65,7 @@ extends class_437 {
     }
 
     public boolean method_25404(int n, int n2, int n3) {
+        if (!ru.method.celebression.service.AppearanceMode.isCustom()) return super.method_25404(n, n2, n3);
         if (n == 256) {
             this.celebression$cancel();
             return true;

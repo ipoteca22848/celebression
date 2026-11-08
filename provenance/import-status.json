@@ -2,8 +2,8 @@
   "status": "jar_built",
   "functional_module_registrations": 82,
   "donor_gameplay_modules_imported": 0,
-  "base_java_files": 770,
-  "integration_java_files": 89,
+  "base_java_files": 774,
+  "integration_java_files": 92,
   "branding": "celebression",
   "build": "successful",
   "full_build": "passed",
@@ -15,7 +15,7 @@
   "click_gui": "source_integration_and_visual_setting_adapters_added_runtime_unverified",
   "new_hud": "not_integrated",
   "published": false,
-  "artifact": "build/libs/celebression-2.0.3.jar",
+  "artifact": "build/libs/celebression-2.0.4.jar",
   "minecraft_startup": "not_tested",
   "source_remapping_and_resource_tests_passed": 10,
   "gui_font_decoding": "passed_16_fonts",
@@ -27,5 +27,9 @@
   "default_secondary": "#C4EBFF",
   "native_verifier_binding": "passed_linux_original_library",
   "native_packaged_jar": "passed_linux",
-  "invalid_signatures": "rejected"
+  "invalid_signatures": "rejected",
+  "menu_appearance": "persistent_switch_and_fades_runtime_unverified",
+  "menu_behavior_tests": "passed",
+  "server_promotions": "filtered_and_remote_promotions_disabled",
+  "creator_telegram_links": "removed_from_ui"
 }

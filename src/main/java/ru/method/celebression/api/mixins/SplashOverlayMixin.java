@@ -55,6 +55,7 @@ extends class_4071 {
 
     @Inject(method={"render"}, at={@At(value="HEAD")}, cancellable=true)
     private void celebression$customSplash(class_332 class_3322, int n, int n2, float f, CallbackInfo callbackInfo) {
+        if (!ru.method.celebression.service.AppearanceMode.isCustom()) return;
         if (celebression$broken) {
             return;
         }

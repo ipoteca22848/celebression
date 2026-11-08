@@ -19,6 +19,7 @@ import java.util.Random;
 @SuppressWarnings("All")
 public class MainMenu extends Screen {
 
+    private net.minecraft.client.gui.widget.ButtonWidget themeButton;
     private Button singleplayerButton;
     private Button multiplayerButton;
     private Button altmanagerButton;
@@ -45,7 +46,8 @@ public class MainMenu extends Screen {
 
     @Override
     protected void init() {
-        initTime = System.currentTimeMillis();
+        initTime = System.nanoTime();
+        themeButton = addDrawableChild(ru.method.celebression.integration.ui.bridge.ThemeSwitch.button(width));
         fadeIn = 0f;
 
         // Инициализируем частицы
@@ -66,9 +68,7 @@ public class MainMenu extends Screen {
     @Override
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
         // Анимация появления
-        if (fadeIn < 1f) {
-            fadeIn = Math.min(1f, fadeIn + 0.02f);
-        }
+        fadeIn = ru.method.celebression.service.IntroTransition.progress(initTime, System.nanoTime(), 760_000_000L);
 
         // Анимированный градиентный фон
         long currentTime = System.currentTimeMillis();
@@ -120,7 +120,7 @@ public class MainMenu extends Screen {
         int titleWidth = (int) FontUtils.sf_bold[54].getWidth(title);
         float titleX = (this.width - titleWidth) / 2f;
         float titleBaseY = this.height / 5f;
-        float titleY = titleBaseY + shakeOffsetY;
+        float titleY = titleBaseY + shakeOffsetY + (1f - fadeIn) * 12f;
 
         // Тень для заголовка
         context.getMatrices().push();
@@ -131,8 +131,8 @@ public class MainMenu extends Screen {
 
         // Основной заголовок с градиентом
         float time = (System.currentTimeMillis() % 4000L) / 1500f;
-        int lightBlue1 = new Color(196, 235, 255, 255).getRGB();
-        int lightBlue2 = new Color(142, 216, 255, 255).getRGB();
+        int lightBlue1 = new Color(196, 235, 255, Math.round(255 * fadeIn)).getRGB();
+        int lightBlue2 = new Color(142, 216, 255, Math.round(255 * fadeIn)).getRGB();
         FontUtils.sf_bold[54].renderAnimatedGradientText(context.getMatrices(), title, titleX, titleY, lightBlue1, lightBlue2, time);
 
         float titleHeight = 54;
@@ -195,6 +195,11 @@ public class MainMenu extends Screen {
         // Тень для версии
         FontUtils.sf_medium[16].centeredDraw(context.getMatrices(), versionText, versionX + 1, versionY + 1, new Color(0, 0, 0, 150).getRGB());
         FontUtils.sf_medium[16].centeredDraw(context.getMatrices(), versionText, versionX, versionY, new Color(180, 180, 180, 200).getRGB());
+        themeButton.setAlpha(fadeIn);
+        themeButton.render(context, mouseX, mouseY, delta);
+        int veil = Math.round((1f - fadeIn) * 255f);
+        if (veil > 0) context.fill(0, 0, width, height, veil << 24);
+
     }
 
     @Override

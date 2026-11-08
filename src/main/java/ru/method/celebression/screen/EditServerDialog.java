@@ -16,7 +16,7 @@ extends ServerDialog {
         this.acU = class_6422;
         this.acV = bl;
         this.acB.add(new ServerDialog.DialogField("\u041d\u0430\u0437\u0432\u0430\u043d\u0438\u0435", "\u0421\u0435\u0440\u0432\u0435\u0440", class_6422.field_3752));
-        this.acB.add(new ServerDialog.DialogField("\u0410\u0434\u0440\u0435\u0441", "mc.artygrief.su", class_6422.field_3761));
+        this.acB.add(new ServerDialog.DialogField("\u0410\u0434\u0440\u0435\u0441", "play.example.org", class_6422.field_3761));
         this.acW = new ServerDialog.DialogButton("\u0420\u0435\u0441\u0443\u0440\u0441\u043f\u0430\u043a \u0441\u0435\u0440\u0432\u0435\u0440\u0430", EditServerDialog.a(class_6422.method_2990()), "\u0412\u044b\u043a\u043b\u044e\u0447\u0435\u043d", "\u041f\u0440\u0438 \u0437\u0430\u043f\u0440\u043e\u0441\u0435", "\u0412\u043a\u043b\u044e\u0447\u0451\u043d");
         this.acC.add(this.acW);
     }

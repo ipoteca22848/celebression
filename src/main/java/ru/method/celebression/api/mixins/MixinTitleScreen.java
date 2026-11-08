@@ -14,14 +14,14 @@ public abstract class MixinTitleScreen
 implements MinecraftClientAccess {
     @Inject(method={"init"}, at={@At(value="RETURN")})
     private void celebressions$redirectToCustom(CallbackInfo callbackInfo) {
-        if (aiG == null || ru.method.celebression.service.UnhookService.isActive()) {
+        if (aiG == null || !ru.method.celebression.service.AppearanceMode.isCustom()) {
             return;
         }
         if (MixinTitleScreen.aiG.field_1755 instanceof CustomMainMenuScreen) {
             return;
         }
         aiG.execute(() -> {
-            if (ru.method.celebression.service.UnhookService.isActive()) return;
+            if (!ru.method.celebression.service.AppearanceMode.isCustom()) return;
             class_437 class_4372 = MixinTitleScreen.aiG.field_1755;
             if (class_4372 instanceof class_442 && !(class_4372 instanceof CustomMainMenuScreen)) {
                 aiG.method_1507((class_437)new CustomMainMenuScreen());

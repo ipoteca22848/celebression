@@ -177,11 +177,7 @@ public final class MenuChrome {
     }
 
     public static void drawFooterSignature(class_4587 class_45872, int n, int n2, boolean bl) {
-        Instance instance = Fonts.PLEXMONO.getFont(9.5f);
-        String string = "by @emper0rhero and telegram.me/celebression";
-        float f = (float)n2 - 44.0f - instance.getHeight();
-        float f2 = bl ? ((float)n - instance.getWidth(string)) / 2.0f : 56.0f;
-        Render2D.drawFont(class_45872, instance, string, f2, f, MUTED4);
+        // Promotional footer removed.
     }
 
     public static void drawLogo(class_4587 class_45872, int n) {

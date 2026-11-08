@@ -63,7 +63,7 @@ extends HudElement {
         float f8 = 9.0f;
         String string = "C";
         String string2 = "O";
-        String string3 = "t.me/Celebression";
+        String string3 = "celebression";
         Font font = Fonts.ROUNDBOLD;
         Font font2 = Fonts.ICONSNEW;
         float f9 = Fonts.ROUNDBOLD.getWidth(string3, f7);

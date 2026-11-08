@@ -163,29 +163,12 @@ implements MinecraftClientAccess {
     }
 
     private void pD() {
-        UserSyncManager userSyncManager = Celebression.getInstance().getUserSyncManager();
-        if (userSyncManager == null) {
-            this.d(List.of());
-            return;
-        }
-        userSyncManager.a((List<UserSyncManager.SyncPayload> list) -> aiG.execute(() -> this.d((List<UserSyncManager.SyncPayload>)list)));
+        this.d(List.of());
     }
 
     private void d(List<UserSyncManager.SyncPayload> list) {
         this.abw.clear();
-        HashSet<String> hashSet = new HashSet<String>();
-        for (UserSyncManager.SyncPayload syncPayload : list) {
-            this.abw.add(new class_642(syncPayload.name(), syncPayload.eV(), class_642.class_8678.field_45611));
-            hashSet.add(syncPayload.eV() == null ? "" : syncPayload.eV().toLowerCase(Locale.ROOT));
-        }
-        for (String[] stringArray : abu) {
-            if (!hashSet.add(stringArray[1].toLowerCase(Locale.ROOT))) continue;
-            this.abw.add(new class_642(stringArray[0], stringArray[1], class_642.class_8678.field_45611));
-        }
         this.pE();
-        for (class_642 class_6422 : this.abw) {
-            this.b(class_6422);
-        }
     }
 
     private boolean a(class_642 class_6422) {
@@ -382,7 +365,6 @@ implements MinecraftClientAccess {
         MenuChrome.drawScreenBackground(class_45872, this.vw, this.vh, this.parX, this.parY);
         this.g(class_45872, n3, n4);
         MenuChrome.drawLogo(class_45872, this.vw);
-        this.h(class_45872, n3, n4);
         MenuChrome.drawClock(class_45872, this.vw);
         this.h(class_45872);
         if (MenuChrome.hasMusic()) {
@@ -446,9 +428,7 @@ implements MinecraftClientAccess {
     }
 
     private void h(class_4587 class_45872) {
-        Instance instance = Fonts.PLEXMONO.getFont(9.5f);
-        String string = "by @emper0rhero";
-        Render2D.drawFont(class_45872, instance, string, 56.0f, (float)this.vh - 44.0f - instance.getHeight(), abf);
+        // Promotional footer removed.
     }
 
     private float pG() {
@@ -912,10 +892,6 @@ implements MinecraftClientAccess {
         float f2 = (float)(d2 / (double)this.uiScale);
         if (MenuChrome.in(this.abN, f, f2)) {
             this.pJ();
-            return true;
-        }
-        if (MenuChrome.in(this.abO, f, f2)) {
-            this.openAccountSwitcher();
             return true;
         }
         if (MenuChrome.hasMusic() && MenuChrome.in(this.abP, f, f2)) {

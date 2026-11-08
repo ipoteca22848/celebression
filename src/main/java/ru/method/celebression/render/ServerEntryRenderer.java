@@ -46,6 +46,7 @@ public final class ServerEntryRenderer {
     }
 
     public static boolean b(class_437 class_4372) {
+        if (!ru.method.celebression.service.AppearanceMode.isCustom()) return false;
         if (!add || class_4372 == null) {
             return false;
         }

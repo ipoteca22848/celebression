@@ -111,6 +111,7 @@ MinecraftClientAccess {
         this.initTime = System.currentTimeMillis();
         instance = this;
         this.createDirs(this.getGlobalsDir(), this.getConfigsDir(), this.getThemesDir());
+        ru.method.celebression.service.AppearanceMode.initialize(this.getGlobalsDir().toPath());
         BuildControlService.ex();
         this.eventHandler = new ProfiledEventBus();
         this.eventHandler.registerLambdaFactory(Celebression.class.getPackageName(), (method, clazz) -> (MethodHandles.Lookup)method.invoke(null, clazz, MethodHandles.lookup()));
